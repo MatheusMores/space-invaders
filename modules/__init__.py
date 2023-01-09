@@ -1,2 +1,2 @@
 from .player import Player
-from ..player2 import Player2
+from .player2 import Player2
