@@ -7,7 +7,7 @@ from modules.player2 import Player2
 
 MAIN_X = 32
 MAIN_Y = 0
-player_x = 10
+player_x = 30
 player_y = 31
 
 

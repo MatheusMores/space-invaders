@@ -1,7 +1,8 @@
 from colorit import *
-import cursor
-import os
+
 import WConio2
+
+from .limiteTela import LimiteTela
 
 character = "§"
 yellow = color(character, Colors.yellow)
@@ -27,17 +28,27 @@ class Player2:
             [gray, light_gray, light_gray, None, None, yellow, red, yellow, None, None, light_gray, light_gray, gray],
             [dark_gray, gray, None, None, None, None, yellow, None, None, None, None, gray, dark_gray]
         ]
+    
+    def shoot(self, count):
+        for i in range(20):
+            WConio2.gotoxy(self.x + 7, self.y + i)
+            return ('oo')
+
         
     def controll(self, count):
         if WConio2.kbhit():
             (key, symbol) = WConio2.getch()
     
             if symbol == 'a':
-                if count%3 == 0:
+                if LimiteTela.limitePlayerX(self.x - 1) == False:
+                    pass
+                elif count%2 == 0:
                     self.x-=1
     
             if symbol == 'd':
-                if count%3 == 0:
+                if LimiteTela.limitePlayerX(self.x + 1) == False:
+                    pass
+                elif count%2 == 0:
                     self.x+=1
             
 
