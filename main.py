@@ -8,9 +8,9 @@ from modules.printTela import printTela
 
 player_x = 30
 player_y = 40
-cont = 0
 
 def iniciarJogo():
+    cont = 0
     init_colorit()
     os.system('cls')
     cursor.hide()
@@ -20,14 +20,12 @@ def iniciarJogo():
 
     while True:
         printTela()
+
+        player1.shoot()
+
         player1.printPlayer()
 
-        player1.controll(cont)
-    
-        
-
-        
-
+        player1.controll()
 
 
 iniciarJogo()

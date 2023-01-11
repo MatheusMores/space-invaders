@@ -11,3 +11,8 @@ class LimiteTela:
 
         if player_x <= 0:
             return False
+    
+    @classmethod
+    def limiteTelaY(self, y):
+        if y <= -3:
+            return False

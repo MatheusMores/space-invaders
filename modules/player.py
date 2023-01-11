@@ -43,21 +43,37 @@ class Player:
         WConio2.gotoxy(self.x, self.y + 7)
         print(' ' + dark_gray + gray + ' ' * 4 + yellow + ' ' * 4 + gray + dark_gray + ' ') 
 
+    def shoot(self):
         
-    def controll(self, count):
+        for i in range(51):
+                    
+            if LimiteTela.limiteTelaY(self.y - i - 1) == False:
+                pass
+            else:
+                WConio2.gotoxy(self.x + 7, self.y - i - 1) 
+                print(red)
+
+                WConio2.gotoxy(self.x + 7, self.y - i + 2) 
+                print(' ')
+        
+            # CONFERIR SE ACERTOU
+
+
+
+    def controll(self):
         if WConio2.kbhit():
             (key, symbol) = WConio2.getch()
     
             if symbol == 'a':
                 if LimiteTela.limitePlayerX(self.x - 1) == False:
                     pass
-                elif count%2 == 0:
+                else:
                     self.x-=1
     
             if symbol == 'd':
                 if LimiteTela.limitePlayerX(self.x + 1) == False:
                     pass
-                elif count%2 == 0:
+                else:
                     self.x+=1
             
 
