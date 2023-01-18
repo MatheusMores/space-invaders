@@ -10,6 +10,13 @@ from modules.printTela import printTela
 player_x = 30
 player_y = 40
 
+def menu():
+    init_colorit()
+    os.system('cls')
+    cursor.hide()
+
+    printTela()
+   
 def iniciarJogo():
     init_colorit()
     os.system('cls')
