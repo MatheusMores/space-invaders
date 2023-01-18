@@ -1,10 +1,12 @@
+import re
 from colorit import *
+import sys
 
 import WConio2
 
 from .limiteTela import LimiteTela
 
-character = "§"
+character = "█"
 yellow = color(character, Colors.yellow)
 red = color(character, Colors.red)
 blue = color(character, Colors.blue)
@@ -43,21 +45,34 @@ class Player:
         WConio2.gotoxy(self.x, self.y + 7)
         print(' ' + dark_gray + gray + ' ' * 4 + yellow + ' ' * 4 + gray + dark_gray + ' ') 
 
-    def shoot(self):
+    def shoot(self, enemys):
         
         for i in range(51):
                     
             if LimiteTela.limiteTelaY(self.y - i - 1) == False:
                 pass
             else:
-                WConio2.gotoxy(self.x + 7, self.y - i - 1) 
+                shoot_x = self.x + 7
+                shoot_y = self.y - i - 1
+                WConio2.gotoxy(shoot_x, shoot_y) 
                 print(red)
-
                 WConio2.gotoxy(self.x + 7, self.y - i + 2) 
                 print(' ')
-        
-            # CONFERIR SE ACERTOU
 
+            responseConferirTiro = self.conferirTiro(shoot_x, shoot_y, enemys)
+            if (responseConferirTiro != False):
+                return (responseConferirTiro)
+                
+
+
+
+    def conferirTiro(self, shoot_x, shoot_y, enemys):
+        for enemy in enemys:
+            if (enemy.x < shoot_x and shoot_x < enemy.x + 12):
+                if (shoot_y == enemy.y):
+                    return enemy.enemy_id
+        return False
+   
 
 
     def controll(self):
