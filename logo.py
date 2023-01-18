@@ -1,7 +1,5 @@
 from colorit import *
 import WConio2
-import os
-import cursor
 
 
 def printLogo(x, y):
