@@ -3,15 +3,8 @@ import WConio2
 import os
 import cursor
 
-character = "██"
-green = color(character, Colors.green)
-white = color(character, (255, 255, 255))
 
 def printLogo(x, y):
-    init_colorit()
-    os.system('cls')
-    cursor.hide()
-
     # Space
     WConio2.gotoxy(x, y)
     print(color((' ' * 65 + "//////////    ////////////,    .////////        ///////////    ///////////////"), Colors.green))
@@ -55,5 +48,3 @@ def printLogo(x, y):
     print(color((' ' * 51 + "((((.   ((((  .(((     ((((((((   .(((,   ((((   (((((((((     ((((((((((   ((((   (((.   (((((((((/"), Colors.green))
 
 
-
-printLogo(14, 2)
