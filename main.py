@@ -2,6 +2,8 @@ import os
 import cursor
 import WConio2
 from colorit import *
+from logo import printLogo
+                                                                          
 
 from modules.player import Player
 from modules.enemy import Enemy
@@ -14,9 +16,10 @@ def menu():
     init_colorit()
     os.system('cls')
     cursor.hide()
-
-    printTela()
+    printLogo(14, 2)
    
+
+
 def iniciarJogo():
     init_colorit()
     os.system('cls')
@@ -33,7 +36,7 @@ def iniciarJogo():
     while True:
 
         printTela()
-        
+
         enemy1.printEnemy()
 
         enemy2.printEnemy()
@@ -45,5 +48,4 @@ def iniciarJogo():
 
         player1.controll()
 
-
-iniciarJogo()
+menu()
