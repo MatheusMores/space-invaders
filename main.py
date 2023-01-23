@@ -41,11 +41,10 @@ def iniciarJogo():
 
         enemy2.printEnemy()
 
-
-        print(player1.shoot(enemys))
+        player1.shoot(enemys)
 
         player1.printPlayer()
 
         player1.controll()
 
-menu()
+iniciarJogo()
