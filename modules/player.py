@@ -59,33 +59,28 @@ class Player:
                 WConio2.gotoxy(self.x + 7, self.y - i + 2) 
                 print(' ')
 
-            responseConferirTiro = self.conferirTiro(shoot_x, shoot_y, enemys)
-            if (responseConferirTiro != False):
-                return (responseConferirTiro)
-                
-
+            self.conferirTiro(shoot_x, shoot_y, enemys)
 
 
     def conferirTiro(self, shoot_x, shoot_y, enemys):
         for enemy in enemys:
             if (enemy.x < shoot_x and shoot_x < enemy.x + 12):
                 if (shoot_y == enemy.y):
-                    return enemy.enemy_id
+                    enemy.is_alive = False
         return False
    
-
 
     def controll(self):
         if WConio2.kbhit():
             (key, symbol) = WConio2.getch()
     
-            if symbol == 'a':
+            if symbol == 'a' or symbol == 'A':
                 if LimiteTela.limitePlayerX(self.x - 1) == False:
                     pass
                 else:
                     self.x-=1
     
-            if symbol == 'd':
+            if symbol == 'd' or symbol == 'D':
                 if LimiteTela.limitePlayerX(self.x + 1) == False:
                     pass
                 else:
