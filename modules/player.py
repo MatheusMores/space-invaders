@@ -1,7 +1,4 @@
-import re
 from colorit import *
-import sys
-
 import WConio2
 
 from .limiteTela import LimiteTela
@@ -17,6 +14,7 @@ light_gray = color(character, (225,225,225))
 
 class Player:
     def __init__(self, player_x, player_y):
+        self.pontuacao = 0
         self.x = player_x
         self.y = player_y
     
@@ -45,10 +43,8 @@ class Player:
         WConio2.gotoxy(self.x, self.y + 7)
         print(' ' + dark_gray + gray + ' ' * 4 + yellow + ' ' * 4 + gray + dark_gray + ' ') 
 
-    def shoot(self, enemys):
-        
-        for i in range(51):
-                    
+    def shoot(self, enemys):  
+        for i in range(51):               
             if LimiteTela.limiteTelaY(self.y - i - 1) == False:
                 pass
             else:
@@ -66,6 +62,8 @@ class Player:
         for enemy in enemys:
             if (enemy.x < shoot_x and shoot_x < enemy.x + 12):
                 if (shoot_y == enemy.y):
+                    if (enemy.is_alive):
+                        self.pontuacao += 50
                     enemy.is_alive = False
         return False
    
