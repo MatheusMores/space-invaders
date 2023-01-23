@@ -46,3 +46,19 @@ def printLogo(x, y):
     print(color((' ' * 51 + "((((.   ((((  .(((     ((((((((   .(((,   ((((   (((((((((     ((((((((((   ((((   (((.   (((((((((/"), Colors.green))
 
 
+    # New Game
+    WConio2.gotoxy(x + 84, y + 26)
+    print(color(('█▄  █ █▀▀ █   █    █▀▀█ █▀▀█ █▀▄▀█ █▀▀'), Colors.green))
+    WConio2.gotoxy(x + 84, y + 27)
+    print(color(('█ █ █ █▀▀ █▄█▄█    █ ▄▄ █▄▄█ █ ▀ █ █▀▀'), Colors.green))
+    WConio2.gotoxy(x + 84, y + 28)
+    print(color(('█  ▀█ ▀▀▀  ▀ ▀     █▄▄█ ▀  ▀ ▀   ▀ ▀▀▀'), Colors.green))
+                    
+    # HighScore
+    WConio2.gotoxy(x + 81, y + 33)
+    print(color(('█  █  ▀  █▀▀▀ █  █ █▀▀ █▀▀ █▀▀█ █▀▀█ █▀▀ █▀▀'), Colors.green))
+    WConio2.gotoxy(x + 81, y + 34)
+    print(color(('█▀▀█ ▀█▀ █ ▀█ █▀▀█ ▀▀█ █   █  █ █▄▄▀ █▀▀ ▀▀█'), Colors.green))
+    WConio2.gotoxy(x + 81, y + 35)
+    print(color(('█  █ ▀▀▀ ▀▀▀▀ ▀  ▀ ▀▀▀ ▀▀▀ ▀▀▀▀ ▀ ▀▀ ▀▀▀ ▀▀▀'), Colors.green))
+                    

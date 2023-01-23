@@ -16,7 +16,12 @@ def menu():
     init_colorit()
     os.system('cls')
     cursor.hide()
-    printLogo(14, 2)
+    while True:
+        printLogo(14, 2)
+
+        a = int(input())
+        if (a == 1):
+            iniciarJogo()
    
 
 
@@ -25,7 +30,7 @@ def iniciarJogo():
     os.system('cls')
     cursor.hide()
 
-    player1 = Player(player_x, player_y)
+    player = Player(player_x, player_y)
     enemys = []
     enemy1 = Enemy(20, 10)
     enemy2 = Enemy(40, 10)
@@ -35,16 +40,16 @@ def iniciarJogo():
 
     while True:
 
-        printTela()
+        printTela(player.pontuacao)
 
         enemy1.printEnemy()
 
         enemy2.printEnemy()
 
-        player1.shoot(enemys)
+        player.shoot(enemys)
 
-        player1.printPlayer()
+        player.printPlayer()
 
-        player1.controll()
+        player.controll()
 
-iniciarJogo()
+menu()
