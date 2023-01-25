@@ -80,7 +80,6 @@ class Menu:
         WConio2.gotoxy(x + 95, y + 42)
         print(color(('▀▀▀█  ▀▀▀ ▀▀▀   ▀'), Colors.green))
 
-
     def selectOpcao(self):
         if WConio2.kbhit():
             (key, symbol) = WConio2.getch()
