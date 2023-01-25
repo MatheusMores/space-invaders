@@ -2,12 +2,11 @@ import os
 import cursor
 import WConio2
 from colorit import *
-from logo import printLogo
 
-
+from modules.printTela import printTela
 from modules.player import Player
 from modules.enemy import Enemy
-from modules.printTela import printTela
+from menu import Menu
 
 player_x = 30
 player_y = 40
@@ -16,21 +15,27 @@ def menu():
     init_colorit()
     os.system('cls')
     cursor.hide()
+    menu = Menu()
+
     while True:
-        printLogo(14, 2)
+        menu.printMenu()
+        opcao = menu.selectOpcao()
 
-        a = int(input())
-        if (a == 1):
+        if opcao == 0:
             iniciarJogo()
+        
+        elif opcao == 1:
+            printHighscores()
 
-
+def printHighscores():
+    pass
 
 def iniciarJogo():
     init_colorit()
     os.system('cls')
     cursor.hide()
 
-    player = Player(player_x, player_y)
+    player = Player('Jose', player_x, player_y)
     enemys = []
     enemy1 = Enemy(20, 10)
     enemy2 = Enemy(40, 10)
