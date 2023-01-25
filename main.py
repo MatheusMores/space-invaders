@@ -1,6 +1,5 @@
 import os
 import cursor
-import WConio2
 from colorit import *
 
 from modules.printTela import printTela
