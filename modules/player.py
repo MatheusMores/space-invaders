@@ -43,7 +43,17 @@ class Player:
         
         WConio2.gotoxy(self.x, self.y + 7)
         print(' ' + dark_gray + gray + ' ' * 4 + yellow + ' ' * 4 + gray + dark_gray + ' ') 
-
+    
+    def printVidas(self):    
+        WConio2.gotoxy(200, 4)
+        print('  ' + red * 2 + '  ' + red * 2 + '  ')
+        WConio2.gotoxy(200, 5)
+        print(red * 10)
+        WConio2.gotoxy(200, 6)
+        print('  ' + red * 6 + '  ')
+        WConio2.gotoxy(200, 7)
+        print('  ' * 2 + red * 2 + '  ' * 2)
+    
     def shoot(self, enemys):  
         for i in range(51):               
             if LimiteTela.limiteTelaY(self.y - i - 1) == False:
