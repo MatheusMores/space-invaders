@@ -99,6 +99,9 @@ class Menu:
             if key == 13 and self.opcao == 0:
                 return 0
 
+            if key == 13 and self.opcao == 1:
+                return 1
+
         if self.opcao == 0:
             self.selectNewGame()
         

@@ -2,13 +2,12 @@ import os
 import cursor
 from colorit import *
 
-from modules.printTela import printTela
-from modules.player import Player
-from modules.enemy import Enemy
+import WConio2
+from printTela import printTela
+from player import Player
+from enemy import Enemy
 from menu import Menu
-
-player_x = 30
-player_y = 40
+from Highscore import Highscores
 
 def menu():
     init_colorit()
@@ -34,7 +33,6 @@ def printHighscores():
 
             if key == 27:
                 menu()
-                break
 
         highs = Highscores() 
         highs.printHighScore()
@@ -44,7 +42,7 @@ def iniciarJogo():
     os.system('cls')
     cursor.hide()
 
-    player = Player('Jose', player_x, player_y)
+    player = Player('Jose')
     enemys = []
     enemy1 = Enemy(20, 10)
     enemy2 = Enemy(40, 10)
@@ -63,6 +61,7 @@ def iniciarJogo():
         player.shoot(enemys)
 
         player.printPlayer()
+        player.printVidas()
 
         player.controll()
 
