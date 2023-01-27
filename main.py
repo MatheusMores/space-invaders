@@ -29,11 +29,14 @@ def menu():
 def printHighscores():
     os.system('cls')
     while True:
+        if WConio2.kbhit():
+            (key, symbol) = WConio2.getch()
+
+            if key == 27:
+                menu()
+                break
+
         highs = Highscores() 
-        highs.addNewHighScore({
-            "name": "vini",
-            "pontuacao": 10000
-        })
         highs.printHighScore()
 
 def iniciarJogo():
