@@ -27,7 +27,14 @@ def menu():
             printHighscores()
 
 def printHighscores():
-    pass
+    os.system('cls')
+    while True:
+        highs = Highscores() 
+        highs.addNewHighScore({
+            "name": "vini",
+            "pontuacao": 10000
+        })
+        highs.printHighScore()
 
 def iniciarJogo():
     init_colorit()
