@@ -15,7 +15,7 @@ light_gray = color(character, (225,225,225))
 class Player:
     def __init__(self, name):
         self.name = name
-        self.vidas = 5
+        self.vidas = 3
         self.pontuacao = 0
         self.x = int(limitesTela['x'] / 2) - 4
         self.y = limitesTela['y'] - 10
@@ -47,14 +47,14 @@ class Player:
 
     def printVidas(self):
     
-        for i in range(self.vidas):
-            WConio2.gotoxy(limitesTela['x'] - 11 - i * 12, limitesTela['y'] + 2)
+        for vida in range(self.vidas):
+            WConio2.gotoxy(limitesTela['x'] - 11 - vida * 12, limitesTela['y'] + 2)
             print('  ' + red * 2 + '  ' + red * 2 + '  ')
-            WConio2.gotoxy(limitesTela['x'] - 11 - i * 12, limitesTela['y'] + 3)
+            WConio2.gotoxy(limitesTela['x'] - 11 - vida * 12, limitesTela['y'] + 3)
             print(red * 10)
-            WConio2.gotoxy(limitesTela['x'] - 11 - i * 12, limitesTela['y'] + 4)
+            WConio2.gotoxy(limitesTela['x'] - 11 - vida * 12, limitesTela['y'] + 4)
             print('  ' + red * 6 + '  ')
-            WConio2.gotoxy(limitesTela['x'] - 11 - i * 12, limitesTela['y'] + 5)
+            WConio2.gotoxy(limitesTela['x'] - 11 - vida * 12, limitesTela['y'] + 5)
             print('  ' * 2 + red * 2 + '  ' * 2)
 
     def shoot(self, enemys):  
@@ -78,7 +78,9 @@ class Player:
                 if (shoot_y == enemy.y):
                     if (enemy.is_alive):
                         self.pontuacao += 50
+                        # apagar coração
                     enemy.is_alive = False
+                    
         return False
    
 
