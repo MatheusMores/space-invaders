@@ -33,19 +33,8 @@ class Highscores:
             json.dump(self.highscores, outfile)
 
     def printHighScore(self):
-        init_colorit()
-        os.system('cls')
         printWithSpecialCharacters('1-', 10, 10)
         printWithSpecialCharacters(f'{self.highscores[0]["name"]}:{self.highscores[0]["pontuacao"]}', 25, 10)
 
 
-highs = Highscores() 
-highs.addNewHighScore({
-    "name": "mores",
-    "pontuacao": 8900
-})
-highs.printHighScore()
-# highs.addNewHighScore({
-#     "name": "Leo",
-#     "pontuacao": 5500
-# })  
+
