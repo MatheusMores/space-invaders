@@ -43,22 +43,40 @@ def iniciarJogo():
     cursor.hide()
 
     player = Player('Jose')
-    enemys = []
-    enemy1 = Enemy(20, 10)
-    enemy2 = Enemy(40, 10)
+    
+    enemy1 = Enemy(10, 7)
+    enemy2 = Enemy(30, 7)
+    enemy3 = Enemy(50, 7)
+    enemy4 = Enemy(70, 7)
+    enemy5 = Enemy(90, 7)
+    enemy6 = Enemy(110, 7)
+    enemy7 = Enemy(130, 7)
+    # enemy8 = Enemy(150, 7)
+    # enemy9 = Enemy(170, 7)
+    # enemy10 = Enemy(190, 7)
 
-    enemys.append(enemy1)
-    enemys.append(enemy2)
+    enemies = [enemy1, enemy2, enemy3, enemy4, enemy5, enemy6, enemy7]
+
 
     while True:
 
         printTela(player.pontuacao)
 
-        enemy1.printEnemy()
+        enemy1.iniciarJogo(enemies, player)
+        enemy2.iniciarJogo(enemies, player)
+        enemy3.iniciarJogo(enemies, player)
+        enemy4.iniciarJogo(enemies, player)
+        enemy5.iniciarJogo(enemies, player)
+        enemy6.iniciarJogo(enemies, player)
+        enemy7.iniciarJogo(enemies, player)
+        # enemy8.iniciarJogo(enemies, player)
+        # enemy9.iniciarJogo(enemies, player)
+        # enemy10.iniciarJogo(enemies, player)
 
-        enemy2.printEnemy()
+        #conferirNumeroInimigos()
 
-        player.shoot(enemys)
+
+        player.shoot(enemies)
 
         player.printPlayer()
         player.printVidas()

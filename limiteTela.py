@@ -8,6 +8,14 @@ class LimiteTela:
 
         if player_x <= 0:
             return False
+
+    @classmethod
+    def limiteEnemyX(self, enemy_x):
+        if enemy_x + 15 >= limitesTela['x']:
+            return False
+
+        if enemy_x <= 0:
+            return False
     
     @classmethod
     def limiteTelaY(self, y):
@@ -15,6 +23,6 @@ class LimiteTela:
             return False
 
 limitesTela = {
-    'x': 236,
+    'x': 150,
     'y': 60
 }

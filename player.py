@@ -1,5 +1,6 @@
 from colorit import *
 import WConio2
+import sys
 
 from limiteTela import LimiteTela, limitesTela
 
@@ -15,6 +16,7 @@ light_gray = color(character, (225,225,225))
 class Player:
     def __init__(self, name):
         self.name = name
+        self.tiros_tomados = []
         self.vidas = 3
         self.pontuacao = 0
         self.x = int(limitesTela['x'] / 2) - 4
@@ -46,8 +48,7 @@ class Player:
         print(' ' + dark_gray + gray + ' ' * 4 + yellow + ' ' * 4 + gray + dark_gray + ' ') 
 
     def printVidas(self):
-    
-        for vida in range(self.vidas):
+        for vida in range(int(self.vidas)):
             WConio2.gotoxy(limitesTela['x'] - 11 - vida * 12, limitesTela['y'] + 2)
             print('  ' + red * 2 + '  ' + red * 2 + '  ')
             WConio2.gotoxy(limitesTela['x'] - 11 - vida * 12, limitesTela['y'] + 3)
@@ -57,6 +58,24 @@ class Player:
             WConio2.gotoxy(limitesTela['x'] - 11 - vida * 12, limitesTela['y'] + 5)
             print('  ' * 2 + red * 2 + '  ' * 2)
 
+    def perderVida(self, shoot_id):
+        if (shoot_id not in self.tiros_tomados):
+            self.tiros_tomados.append(shoot_id)
+
+            for vida in range(self.vidas):
+                WConio2.gotoxy(limitesTela['x'] - 11 - vida * 12, limitesTela['y'] + 2)
+                print('  ' * 7)
+                WConio2.gotoxy(limitesTela['x'] - 11 - vida * 12, limitesTela['y'] + 3)
+                print('  ' * 7)
+                WConio2.gotoxy(limitesTela['x'] - 11 - vida * 12, limitesTela['y'] + 4)
+                print('  ' * 7)
+                WConio2.gotoxy(limitesTela['x'] - 11 - vida * 12, limitesTela['y'] + 5)
+                print('  ' * 7)
+            self.vidas -= 1
+        
+        if self.vidas == 0:
+            sys.exit()
+
     def shoot(self, enemys):  
         for i in range(limitesTela['y']):               
             if LimiteTela.limiteTelaY(self.y - i - 1) == False:
@@ -64,8 +83,9 @@ class Player:
             else:
                 shoot_x = self.x + 7
                 shoot_y = self.y - i - 1
-                WConio2.gotoxy(shoot_x, shoot_y) 
-                print(red)
+                for j in range(3):
+                    WConio2.gotoxy(shoot_x, shoot_y - j) 
+                    print(red)
                 WConio2.gotoxy(self.x + 7, self.y - i + 2) 
                 print(' ')
 
@@ -77,8 +97,7 @@ class Player:
             if (enemy.x < shoot_x and shoot_x < enemy.x + 12):
                 if (shoot_y == enemy.y):
                     if (enemy.is_alive):
-                        self.pontuacao += 50
-                        # apagar coração
+                        self.pontuacao += 150
                     enemy.is_alive = False
                     
         return False
