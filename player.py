@@ -1,5 +1,6 @@
 from colorit import *
 import WConio2
+from characters import printWithSpecialCharacters
 
 from limiteTela import CONST_X, LimiteTela, limitesTela
 from highscore import Highscores
@@ -81,10 +82,17 @@ class Player:
             })
 
             self.is_alive = False
-            
+    
+    def printPontuacao(self):
+        printWithSpecialCharacters("SCORE: ", CONST_X, limitesTela['y'] + 2)
+        
+        for i in range(len(str(self.pontuacao))):
+            printWithSpecialCharacters("<", CONST_X + 30 + 4 * i, limitesTela['y'] + 2)
+        
+        printWithSpecialCharacters(str(self.pontuacao), CONST_X + 30, limitesTela['y'] + 2)
             
 
-    def shoot(self, enemys):  
+    def shoot(self, enemies):  
         for i in range(limitesTela['y']):               
             if LimiteTela.limiteTelaY(self.y - i - 1) == False:
                 pass
@@ -97,10 +105,10 @@ class Player:
                 WConio2.gotoxy(self.x + 7, self.y - i + 2) 
                 print(' ')
 
-            self.conferirTiro(shoot_x, shoot_y, enemys)
+            self.conferirTiro(shoot_x, shoot_y, enemies)
 
-    def conferirTiro(self, shoot_x, shoot_y, enemys):
-        for enemy in enemys:
+    def conferirTiro(self, shoot_x, shoot_y, enemies):
+        for enemy in enemies:
             if (enemy.x < shoot_x and shoot_x < enemy.x + 12):
                 if (shoot_y == enemy.y):
                     if (enemy.is_alive):
@@ -125,7 +133,7 @@ class Player:
                     pass
                 else:
                     self.x+=2
-            
+    
 
 
 
