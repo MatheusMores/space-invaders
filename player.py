@@ -1,9 +1,9 @@
 from colorit import *
 import WConio2
-import sys
 
-from limiteTela import LimiteTela, limitesTela
-
+from limiteTela import CONST_X, LimiteTela, limitesTela
+from highscore import Highscores
+ 
 character = "█"
 yellow = color(character, Colors.yellow)
 red = color(character, Colors.red)
@@ -18,8 +18,9 @@ class Player:
         self.name = name
         self.tiros_tomados = []
         self.vidas = 3
+        self.is_alive = True
         self.pontuacao = 0
-        self.x = int(limitesTela['x'] / 2) - 4
+        self.x = int(limitesTela['x'] / 2) - 4 + CONST_X
         self.y = limitesTela['y'] - 10
     
     def printPlayer(self):
@@ -49,13 +50,13 @@ class Player:
 
     def printVidas(self):
         for vida in range(int(self.vidas)):
-            WConio2.gotoxy(limitesTela['x'] - 11 - vida * 12, limitesTela['y'] + 2)
+            WConio2.gotoxy((limitesTela['x'] - 11 - vida * 12) + CONST_X, limitesTela['y'] + 2)
             print('  ' + red * 2 + '  ' + red * 2 + '  ')
-            WConio2.gotoxy(limitesTela['x'] - 11 - vida * 12, limitesTela['y'] + 3)
+            WConio2.gotoxy((limitesTela['x'] - 11 - vida * 12) + CONST_X, limitesTela['y'] + 3)
             print(red * 10)
-            WConio2.gotoxy(limitesTela['x'] - 11 - vida * 12, limitesTela['y'] + 4)
+            WConio2.gotoxy((limitesTela['x'] - 11 - vida * 12) + CONST_X, limitesTela['y'] + 4)
             print('  ' + red * 6 + '  ')
-            WConio2.gotoxy(limitesTela['x'] - 11 - vida * 12, limitesTela['y'] + 5)
+            WConio2.gotoxy((limitesTela['x'] - 11 - vida * 12) + CONST_X, limitesTela['y'] + 5)
             print('  ' * 2 + red * 2 + '  ' * 2)
 
     def perderVida(self, shoot_id):
@@ -63,18 +64,25 @@ class Player:
             self.tiros_tomados.append(shoot_id)
 
             for vida in range(self.vidas):
-                WConio2.gotoxy(limitesTela['x'] - 11 - vida * 12, limitesTela['y'] + 2)
+                WConio2.gotoxy((limitesTela['x'] - 11 - vida * 12) + CONST_X, limitesTela['y'] + 2)
                 print('  ' * 7)
-                WConio2.gotoxy(limitesTela['x'] - 11 - vida * 12, limitesTela['y'] + 3)
+                WConio2.gotoxy((limitesTela['x'] - 11 - vida * 12) + CONST_X, limitesTela['y'] + 3)
                 print('  ' * 7)
-                WConio2.gotoxy(limitesTela['x'] - 11 - vida * 12, limitesTela['y'] + 4)
+                WConio2.gotoxy((limitesTela['x'] - 11 - vida * 12) + CONST_X, limitesTela['y'] + 4)
                 print('  ' * 7)
-                WConio2.gotoxy(limitesTela['x'] - 11 - vida * 12, limitesTela['y'] + 5)
+                WConio2.gotoxy((limitesTela['x'] - 11 - vida * 12) + CONST_X, limitesTela['y'] + 5)
                 print('  ' * 7)
             self.vidas -= 1
         
         if self.vidas == 0:
-            sys.exit()
+            Highscores.addNewHighScore({
+                "name": self.name,
+                "pontuacao": self.pontuacao
+            })
+
+            self.is_alive = False
+            
+            
 
     def shoot(self, enemys):  
         for i in range(limitesTela['y']):               
@@ -90,7 +98,6 @@ class Player:
                 print(' ')
 
             self.conferirTiro(shoot_x, shoot_y, enemys)
-
 
     def conferirTiro(self, shoot_x, shoot_y, enemys):
         for enemy in enemys:

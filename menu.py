@@ -1,7 +1,6 @@
 from colorit import *
 import WConio2
 
-
 class Menu:
     def __init__(self):
         self.x = 14
