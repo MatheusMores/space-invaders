@@ -25,28 +25,28 @@ class Player:
     
     def printPlayer(self):
         WConio2.gotoxy(self.x, self.y)
-        print(' ' * 7 + light_gray + ' ' * 7)
+        print(' ' * 8 + light_gray + ' ' * 8)
 
         WConio2.gotoxy(self.x, self.y + 1)
-        print(' ' * 6 + light_gray * 3 + ' ' * 6)
+        print(' ' * 7 + light_gray * 3 + ' ' * 7)
         
         WConio2.gotoxy(self.x, self.y + 2)
-        print(' ' * 5 + light_gray * 2 + blue + light_gray * 2 + ' ' * 5)
+        print(' ' * 6 + light_gray * 2 + blue + light_gray * 2 + ' ' * 6)
         
         WConio2.gotoxy(self.x, self.y + 3)
-        print(' ' * 4 + light_gray * 2 + blue * 3 + light_gray * 2 + ' ' * 4)
+        print(' ' * 5 + light_gray * 2 + blue * 3 + light_gray * 2 + ' ' * 5)
         
         WConio2.gotoxy(self.x, self.y + 4)
-        print(' ' * 2 + gray + light_gray * 3 + gray * 3 + light_gray * 3 + gray + ' ' * 2)
+        print(' ' * 3 + gray + light_gray * 3 + gray * 3 + light_gray * 3 + gray + ' ' * 3)
         
         WConio2.gotoxy(self.x, self.y + 5)
-        print(' '+ gray + light_gray * 4 + dark_gray + red + dark_gray + light_gray * 4 + gray + ' ') 
+        print(' ' * 2+ gray + light_gray * 4 + dark_gray + red + dark_gray + light_gray * 4 + gray + ' ' * 2) 
         
         WConio2.gotoxy(self.x, self.y + 6)
-        print(' ' + gray + light_gray * 2 + ' ' * 2 + yellow + red + yellow + ' ' * 2 + light_gray * 2 + gray + ' ') 
+        print(' ' * 2+ gray + light_gray * 2 + ' ' * 2 + yellow + red + yellow + ' ' * 2 + light_gray * 2 + gray + ' ' * 2) 
         
         WConio2.gotoxy(self.x, self.y + 7)
-        print(' ' + dark_gray + gray + ' ' * 4 + yellow + ' ' * 4 + gray + dark_gray + ' ') 
+        print(' ' * 2+ dark_gray + gray + ' ' * 4 + yellow + ' ' * 4 + gray + dark_gray + ' ' * 2) 
 
     def printVidas(self):
         for vida in range(int(self.vidas)):
@@ -115,16 +115,16 @@ class Player:
             (key, symbol) = WConio2.getch()
     
             if symbol == 'a' or symbol == 'A':
-                if LimiteTela.limitePlayerX(self.x - 1) == False:
+                if LimiteTela.limitePlayerX(self.x - 2) == False:
                     pass
                 else:
-                    self.x-=1
+                    self.x-=2
     
             if symbol == 'd' or symbol == 'D':
-                if LimiteTela.limitePlayerX(self.x + 1) == False:
+                if LimiteTela.limitePlayerX(self.x + 2) == False:
                     pass
                 else:
-                    self.x+=1
+                    self.x+=2
             
 
 

@@ -17,18 +17,17 @@ class Highscores:
     @classmethod
     def addNewHighScore(self, nova_pontuacao):
         self.readHighscores(self)
-        self.highscores.sort(key=lambda x: x["pontuacao"], reverse=True)
+        self.highscores.sort(key=lambda x: x["pontuacao"])
         for highscore in self.highscores:
             if nova_pontuacao["pontuacao"] > highscore["pontuacao"]:
                 self.highscores.remove(highscore)
                 
                 self.highscores.append(nova_pontuacao)
                 self.highscores.sort(key=lambda x: x["pontuacao"], reverse=True)
-                self.saveNewHighscores()
+                self.saveNewHighscores(self)
 
                 break
     
-    @classmethod
     def saveNewHighscores(self):
         with open("highscores.json", "w") as outfile:
             json.dump(self.highscores, outfile)
@@ -53,9 +52,7 @@ class Highscores:
         i = 0
         for score in self.highscores:
             printWithSpecialCharacters(f'{i + 1}-', 83, 25 + 6 * i)
-            printWithSpecialCharacters(f'{self.highscores[i]["name"]}:{self.highscores[i]["pontuacao"]}', 93, 25 + 6 * i)
+            printWithSpecialCharacters(f'{score["name"]}:{score["pontuacao"]}', 93, 25 + 6 * i)
             i += 1
-
-
 
 
